@@ -1,0 +1,30 @@
+{
+    "name": "avangard/api",
+    "description": "AVANGARD API v4 client for php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Bykovskiy",
+            "email": "BykovskiyM@avangard.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6.0",
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "guzzlehttp/guzzle": "^6.4",
+        "psr/log": "1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Avangard\\": "src/",
+            "Atol\\": "src/Lib/atol-online/",
+            "OrangeDataClient\\": "src/Lib/orange-data/"
+        }
+    }
+}

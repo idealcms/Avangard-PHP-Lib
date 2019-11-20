@@ -1,0 +1,114 @@
+<?php
+/**
+ * Copyright Bykovskiy Maxim. Avangard (c) 2019.
+ */
+
+namespace Avangard\Methods;
+
+use Avangard\ApiClient;
+use Avangard\Lib\Convertor;
+use Avangard\Lib\ArrayToXml;
+
+/**
+ * Trait Refunds
+ * @package Avangard\Methods
+ */
+trait Refunds
+{
+    /**
+     * Send refund by ticket
+     *
+     * @param $ticket
+     * @param null $amount
+     * @return array
+     * @throws \DOMException
+     */
+    public function orderRefund($ticket, $amount = null)
+    {
+        $params = ['ticket' => $ticket];
+        if(!empty($amount)) {
+            $params['amount'] = $amount;
+        }
+        $request = array_merge($this->getOrderAccess(), $params);
+
+        $xml = ArrayToXml::convert($request, 'reverse_order', false, "UTF-8");
+
+        $url = 'https://www.avangard.ru/iacq/h2h/reverse_order';
+
+        $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
+
+        $status = $result->getStatusCode();
+
+        if($status != 200) {
+            throw new \InvalidArgumentException(
+                "orderRefund: incorrect http code: " . $status, $status
+            );
+        }
+
+        $response = $result->getBody()->getContents();
+
+        error_reporting(1); //Колхоз
+        $resultObject = Convertor::covertToArray($response);
+        error_reporting(E_ALL); //Колхоз
+
+        if(!isset($resultObject['response_code'])) {
+            throw new \InvalidArgumentException(
+                "orderRefund: error in xml data"
+            );
+        }
+
+        if($status == 200 && $resultObject['response_code'] == 0) {
+            return ['transaction_id' => $resultObject['id']];
+        }
+
+        throw new \InvalidArgumentException(
+            "orderRefund: error in PS: " . $resultObject['response_message'], $resultObject['response_code']
+        );
+    }
+
+    /**
+     * Send cancel of order by ticket
+     *
+     * @param $ticket
+     * @return bool
+     * @throws \DOMException
+     */
+    public function orderCancel($ticket)
+    {
+        $request = array_merge($this->getOrderAccess(), ['ticket' => $ticket]);
+
+        $xml = ArrayToXml::convert($request, 'cancel_order', false, "UTF-8");
+
+        $url = 'https://www.avangard.ru/iacq/h2h/cancel_order';
+
+        $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
+
+        $status = $result->getStatusCode();
+
+        if($status != 200) {
+            throw new \InvalidArgumentException(
+                "orderCancel: incorrect http code: " . $status, $status
+            );
+        }
+
+        $response = $result->getBody()->getContents();
+
+        error_reporting(1); //Колхоз
+        $resultObject = Convertor::covertToArray($response);
+        error_reporting(E_ALL); //Колхоз
+
+        if(!isset($resultObject['response_code'])) {
+            throw new \InvalidArgumentException(
+                "orderCancel: error in xml data"
+            );
+        }
+
+        if($status == 200 && $resultObject['response_code'] == 0) {
+            return true;
+        }
+
+        throw new \InvalidArgumentException(
+            "orderCancel: error in PS: " . $resultObject['response_message'], $resultObject['response_code']
+        );
+    }
+}
