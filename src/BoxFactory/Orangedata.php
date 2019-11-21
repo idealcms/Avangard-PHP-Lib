@@ -51,8 +51,12 @@ class Orangedata implements BoxInterface
 
         //ToDo: check connection
         $result = $this->client->check_connection();
-//
-        print_r($result);
+
+        if ($result[1]['http_code'] != 200) {
+            throw new \InvalidArgumentException(
+                "OrangaData Auth error: " . $result[0], $result[1]['http_code']
+            );
+        }
     }
 
     /**

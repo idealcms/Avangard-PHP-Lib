@@ -99,7 +99,7 @@ abstract class AbstractLoader
      *
      * @return bool
      */
-    protected function isBox()
+    public function isBox()
     {
         return (!empty($this->getBox()) ? true : false);
     }
