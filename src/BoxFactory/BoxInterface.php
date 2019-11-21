@@ -61,26 +61,26 @@ interface BoxInterface {
      *
      * @return array
      */
-    public function getPaymentMethod();
+    public static function getPaymentMethod();
 
     /**
      * Get boxes payment objects
      *
      * @return array
      */
-    public function getPaymentObject();
+    public static function getPaymentObject();
 
     /**
      * Get boxes taxation systems
      *
      * @return array
      */
-    public function getTaxationSystem();
+    public static function getTaxationSystem();
 
     /**
      * Get boxes vats
      *
      * @return array
      */
-    public function getVats();
+    public static function getVats();
 }

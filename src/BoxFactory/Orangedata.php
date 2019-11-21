@@ -204,7 +204,7 @@ class Orangedata implements BoxInterface
      *
      * @return array
      */
-    public function getPaymentMethod()
+    public static function getPaymentMethod()
     {
         return [
             1 => 'Предоплата 100%',
@@ -222,7 +222,7 @@ class Orangedata implements BoxInterface
      *
      * @return array
      */
-    public function getPaymentObject()
+    public static function getPaymentObject()
     {
         return [
             1 => 'Товар',
@@ -252,7 +252,7 @@ class Orangedata implements BoxInterface
      *
      * @return array
      */
-    public function getTaxationSystem()
+    public static function getTaxationSystem()
     {
         return [
             0 => 'Общая, ОСН',
@@ -269,7 +269,7 @@ class Orangedata implements BoxInterface
      *
      * @return array
      */
-    public function getVats()
+    public static function getVats()
     {
         return [
             'none' => 'Без НДС',

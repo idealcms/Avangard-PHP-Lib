@@ -661,31 +661,12 @@ Example:
 ```php
 <?php
 require_once "vendor/autoload.php";
-use Avangard\ApiClient;
 
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2',
-        ApiClient::ATOLBOX,
-        [
-            'login' => 'test',
-            'pass' => 'test',
-            'company' => [
-                'group' => 'test',
-                'sno' => 'osn',
-                'inn' => '111111111',
-                'payment_address' => 'Москва, Сретенка 9'
-            ],
-            'testMode' => false
-        ]
-    );
-
-    $rez = $new->request->getPaymentMethod();
+    $rez = \Avangard\BoxFactory\Atolonline::getPaymentMethod();
+    $rez = \Avangard\BoxFactory\Orangedata::getPaymentMethod();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {
@@ -707,31 +688,12 @@ Example:
 ```php
 <?php
 require_once "vendor/autoload.php";
-use Avangard\ApiClient;
 
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2',
-        ApiClient::ATOLBOX,
-        [
-            'login' => 'test',
-            'pass' => 'test',
-            'company' => [
-                'group' => 'test',
-                'sno' => 'osn',
-                'inn' => '11111111111',
-                'payment_address' => 'Москва, Сретенка 9'
-            ],
-            'testMode' => false
-        ]
-    );
-
-    $rez = $new->request->getPaymentObject();
+    $rez = \Avangard\BoxFactory\Atolonline::getPaymentObject();
+    $rez = \Avangard\BoxFactory\Orangedata::getPaymentObject();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {
@@ -753,31 +715,12 @@ Example:
 ```php
 <?php
 require_once "vendor/autoload.php";
-use Avangard\ApiClient;
 
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2',
-        ApiClient::ATOLBOX,
-        [
-            'login' => 'test',
-            'pass' => 'test',
-            'company' => [
-                'group' => 'test',
-                'sno' => 'osn',
-                'inn' => '111111111',
-                'payment_address' => 'Москва, Сретенка 9'
-            ],
-            'testMode' => false
-        ]
-    );
-
-    $rez = $new->request->getTaxationSystem();
+    $rez = \Avangard\BoxFactory\Atolonline::getTaxationSystem();
+    $rez = \Avangard\BoxFactory\Orangedata::getTaxationSystem();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {
@@ -804,26 +747,8 @@ use Avangard\ApiClient;
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2',
-        ApiClient::ATOLBOX,
-        [
-            'login' => 'test',
-            'pass' => 'test',
-            'company' => [
-                'group' => 'test',
-                'sno' => 'osn',
-                'inn' => '11111111',
-                'payment_address' => 'Москва, Сретенка 9'
-            ],
-            'testMode' => false
-        ]
-    );
-
-    $rez = $new->request->getVats();
+    $rez = \Avangard\BoxFactory\Atolonline::getVats();
+    $rez = \Avangard\BoxFactory\Orangedata::getVats();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {
@@ -845,19 +770,11 @@ Example:
 ```php
 <?php
 require_once "vendor/autoload.php";
-use Avangard\ApiClient;
 
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2'
-    );
-
-    $rez = $new->getApiVersions();
+    $rez = \Avangard\ApiClient::getApiVersions();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {
@@ -877,19 +794,11 @@ Example:
 ```php
 <?php
 require_once "vendor/autoload.php";
-use Avangard\ApiClient;
 
 $debug = true;
 
 try {
-    $new = new ApiClient(
-        1,
-        'pass',
-        'sign1',
-        'sign2'
-    );
-
-    $rez = $new->getVersion();
+    $rez = \Avangard\ApiClient::getVersion();
     print_r($rez);
 } catch (\Exception $e) {
     if ($debug) {

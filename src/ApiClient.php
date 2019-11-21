@@ -67,7 +67,7 @@ class ApiClient
      *
      * @return array
      */
-    public function getApiVersions()
+    public static function getApiVersions()
     {
         return ['v4.0'];
     }
@@ -77,7 +77,7 @@ class ApiClient
      *
      * @return string
      */
-    public function getVersion()
+    public static function getVersion()
     {
         $ver = '1.5.0';
         return "Library version $ver. Avangard (c) 2019.";

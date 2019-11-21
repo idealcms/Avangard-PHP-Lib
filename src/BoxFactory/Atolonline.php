@@ -239,7 +239,7 @@ class Atolonline implements BoxInterface
      *
      * @return array
      */
-    public function getPaymentMethod()
+    public static function getPaymentMethod()
     {
         return [
             'full_prepayment' => 'Предоплата 100%. Полная предварительная оплата до момента передачи предмета расчета',
@@ -257,7 +257,7 @@ class Atolonline implements BoxInterface
      *
      * @return array
      */
-    public function getPaymentObject()
+    public static function getPaymentObject()
     {
         return [
             'commodity' => 'товар. О реализуемом товаре, за исключением подакцизного товара (наименование и иные сведения, описывающие товар)',
@@ -286,7 +286,7 @@ class Atolonline implements BoxInterface
      *
      * @return array
      */
-    public function getTaxationSystem()
+    public static function getTaxationSystem()
     {
         return [
             'osn' => 'общая СН',
@@ -303,7 +303,7 @@ class Atolonline implements BoxInterface
      *
      * @return array
      */
-    public function getVats()
+    public static function getVats()
     {
         return [
             'none' => 'Без НДС',
