@@ -53,7 +53,7 @@ trait Transactions
         }
 
         if($status == 200 && $resultObject['response_code'] == 0) {
-            return (!empty($resultObject['oper_info']) ? $resultObject['oper_info'] : []);
+            return (!empty($resultObject['oper_info']) ? (!empty($resultObject['oper_info'][0]) ? $resultObject['oper_info'] : [$resultObject['oper_info']]) : []);
         }
 
         throw new \InvalidArgumentException(
@@ -101,7 +101,7 @@ trait Transactions
         }
 
         if($status == 200 && $resultObject['response_code'] == 0) {
-            return (!empty($resultObject['oper_info']) ? $resultObject['oper_info'] : []);
+            return (!empty($resultObject['oper_info']) ? (!empty($resultObject['oper_info'][0]) ? $resultObject['oper_info'] : [$resultObject['oper_info']]) : []);
         }
 
         throw new \InvalidArgumentException(
