@@ -69,7 +69,7 @@ trait Orders
                     MD5(
                         $this->shop_id .
                         $order['ORDER_NUMBER'] .
-                        ($order['AMOUNT'] * 100)
+                        ($order['AMOUNT'])
                     )
                 )
             )
@@ -157,6 +157,8 @@ trait Orders
                     "prepareForms: incorrect request type"
                 );
         }
+
+        $inputs = array_change_key_case($inputs, CASE_LOWER);
 
         $returnArray = [
             "URL" => $url,

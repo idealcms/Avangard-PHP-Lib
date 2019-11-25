@@ -82,6 +82,8 @@ try {
 ```
 Static method \Avangard\Lib\Logger::log recommended to use in case of $debug param, which set in admin-panel. This method send error's log into developer's telegram. 
 
+!!! All fields with AMOUNT should contain cent's !!!
+
 ### Method's
 
 1.  prepareForms - prepare payment form.
