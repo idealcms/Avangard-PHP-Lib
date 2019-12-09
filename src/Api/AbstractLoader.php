@@ -76,7 +76,7 @@ abstract class AbstractLoader
             );
         }
 
-        $this->client = new Client((!empty($proxy) ? ['proxy' => $proxy, 'http_errors' => false] : ['http_errors' => false]));
+        $this->client = new Client((!empty($proxy) ? ['proxy' => $proxy, 'http_errors' => false, 'verify' => false] : ['http_errors' => false, 'verify' => false]));
         $this->shop_id = (string)$shop_id;
         $this->shop_password = (string)$shop_password;
         $this->shop_sign = (string)$shop_sign;
