@@ -18,7 +18,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "guzzlehttp/guzzle": "^6.4",
-        "psr/log": "1.0.2"
+        "psr/log": "^1.0.2"
     },
     "autoload": {
         "psr-4": {
