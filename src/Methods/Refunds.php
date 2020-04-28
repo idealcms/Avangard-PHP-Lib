@@ -33,7 +33,7 @@ trait Refunds
 
         $xml = ArrayToXml::convert($request, 'reverse_order', false, "UTF-8");
 
-        $url = 'https://www.avangard.ru/iacq/h2h/reverse_order';
+        $url = 'https://pay.avangard.ru/iacq/h2h/reverse_order';
 
         $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
 
@@ -79,7 +79,7 @@ trait Refunds
 
         $xml = ArrayToXml::convert($request, 'cancel_order', false, "UTF-8");
 
-        $url = 'https://www.avangard.ru/iacq/h2h/cancel_order';
+        $url = 'https://pay.avangard.ru/iacq/h2h/cancel_order';
 
         $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
 

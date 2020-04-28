@@ -89,7 +89,7 @@ trait Orders
 
         $xml = ArrayToXml::convert($request, 'get_order_info', false, "UTF-8");
 
-        $url = 'https://www.avangard.ru/iacq/h2h/get_order_info';
+        $url = 'https://pay.avangard.ru/iacq/h2h/get_order_info';
 
         $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
 
@@ -136,12 +136,12 @@ trait Orders
     {
         switch ($type) {
             case ApiClient::HOST2HOST:
-                $url = "https://www.avangard.ru/iacq/pay";
+                $url = "https://pay.avangard.ru/iacq/pay";
                 $method = "get";
                 $inputs = $this->orderRegister($order);
                 break;
             case ApiClient::POSTFORM:
-                $url = "https://www.avangard.ru/iacq/post";
+                $url = "https://pay.avangard.ru/iacq/post";
                 $method = "post";
                 $this->setOrder($order);
                 $this->checkOrder();
@@ -150,7 +150,7 @@ trait Orders
                 break;
             case ApiClient::GETURL:
                 $inputs = $this->orderRegister($order);
-                $url = 'https://www.avangard.ru/iacq/pay?' . http_build_query(['ticket' => $inputs['TICKET']]);
+                $url = 'https://pay.avangard.ru/iacq/pay?' . http_build_query(['ticket' => $inputs['TICKET']]);
                 return $url;
             default:
                 throw new \InvalidArgumentException(
@@ -194,7 +194,7 @@ trait Orders
 
         $xml = ArrayToXml::convert($order, 'NEW_ORDER', false, "UTF-8");
 
-        $url = 'https://www.avangard.ru/iacq/h2h/reg';
+        $url = 'https://pay.avangard.ru/iacq/h2h/reg';
 
         $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
 
