@@ -140,6 +140,11 @@ trait Orders
                 $method = "get";
                 $inputs = $this->orderRegister($order);
                 break;
+            case ApiClient::GETQR:
+                $url = "https://www.avangard.ru/qr_test_iacq/pay";
+                $method = "get";
+                $inputs = $this->orderRegister($order, 'https://www.avangard.ru/qr_test_iacq/h2h/reg');
+                break;
             case ApiClient::POSTFORM:
                 $url = "https://pay.avangard.ru/iacq/post";
                 $method = "post";
@@ -176,7 +181,7 @@ trait Orders
      * @return array
      * @throws \DOMException
      */
-    public function orderRegister($order)
+    public function orderRegister($order, $url = 'https://pay.avangard.ru/iacq/h2h/reg')
     {
         $this->setOrder($order);
         $this->checkOrder();
@@ -193,8 +198,6 @@ trait Orders
         }
 
         $xml = ArrayToXml::convert($order, 'NEW_ORDER', false, "UTF-8");
-
-        $url = 'https://pay.avangard.ru/iacq/h2h/reg';
 
         $result = $this->client->request('POST', $url, ['body' => 'xml=' . $xml, 'headers' => ['Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8']]);
 

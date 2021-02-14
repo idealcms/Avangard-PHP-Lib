@@ -32,6 +32,10 @@ class ApiClient
      * Type of connection to PS
      */
     const GETURL = 3;
+    /**
+     * Type of connection to PS
+     */
+    const GETQR = 4;
 
     /**
      * Type of box
